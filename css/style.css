@@ -1,0 +1,15 @@
+body{
+    background-image: url('https://img4.thuthuatphanmem.vn/uploads/2019/12/09/hinh-nen-bau-troi-mau-tim_040930369.jpg');
+}
+.navbar {
+    background-color: rgba(82,64,120,0.9) !important;
+}
+.navbar li a {
+    color: white !important;
+}
+.navbar li a:hover {
+    color: yellow !important;
+}
+.carousel-inner img{
+    width: 100mm;
+}
