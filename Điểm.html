@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Duc Huy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/s.css" rel="stylesheet"> 
+    <title>Môn học</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px #CCC solid;
+            padding: 5px 10px;
+        }
+        
+        th {
+            background-color: #999;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class = "container">
+        <div class = "menu">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">TRANG CHỦ</a>
+                          </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="ttcb.html">THÔNG TIN CƠ BẢN</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active"  href="ttnc.html">THÔNG TIN NÂNG CAO</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="ttll.html">THÔNG TIN LIÊN LẠC</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="Điểm.html">ĐIỂM</a>
+                      </li>
+                    </ul>
+            
+
+                  </div>
+                </div>
+              </nav>
+        </div>
+    </div>
+    <br>
+    <br>
+    <form name="bangdiemform">
+        <input type="text" name="monhoc" placeholder="Nhập tên môn học">
+        <input type="text" name="tn" placeholder="Nhập điểm TN">
+        <input type="text" name="bt" placeholder="Nhập điểm BT">
+        <input type="text" name="btl" placeholder="Nhập điểm BTL">
+        <input type="text" name="gk" placeholder="Nhập điểm GK">
+        <input type="text" name="ck" placeholder="Nhập điểm CK">
+    
+    </form>
+    <br>
+    <form name="%diem">
+        Nhập phần trăm điểm (%):
+        <input type="text" name="ptn" placeholder="Nhập % điểm TN">
+        <input type="text" name="pbt" placeholder="Nhập % điểm BT">
+        <input type="text" name="pbtl" placeholder="Nhập % điểm BTL">
+        <input type="text" name="pgk" placeholder="Nhập % điểm GK">
+        <input type="text" name="pck" placeholder="Nhập % điểm CK">
+        <input type="button" value="Nhập" onclick="dssv()">
+    </form>
+    <br>
+    <b><i>MÃ CÁC MÔN KHÔNG CẦN NHẬP PHẦN TRĂM ĐIỂM:</i> </b>
+    <br>
+    <br>
+    KTHĐC
+    <br>
+    HĐH
+    <br>
+    HĐC
+    <br>
+    KTCT
+    <br>
+    LTNC
+    <br>
+    <br>
+    <div>
+        <table>
+            <tr>
+                <th>MÔN HỌC</th>
+                <th>TN</th>
+                <th>BT</th>
+                <th>BTL</th>
+                <th>GIỮA KỲ</th>
+                <th>CUỐI KỲ</th>
+                <th>ĐIỂM TRUNG BÌNH</th>
+            </tr>
+            <tbody id="ketqua"></tbody>
+        </table>
+    </div>
+
+    <script>
+        var dsdiem = [];
+
+        function dssv(){
+            var monhoc = document.forms["bangdiemform"]["monhoc"].value;
+            var tn = document.forms["bangdiemform"]["tn"].value;
+            var bt = document.forms["bangdiemform"]["bt"].value;
+            var btl = document.forms["bangdiemform"]["btl"].value;
+            var gk = document.forms["bangdiemform"]["gk"].value;
+            var ck = document.forms["bangdiemform"]["ck"].value;
+
+            var ptn = document.forms["%diem"]["ptn"].value;
+            var pbt = document.forms["%diem"]["pbt"].value;
+            var pbtl = document.forms["%diem"]["pbtl"].value;
+            var pgk = document.forms["%diem"]["pgk"].value;
+            var pck = document.forms["%diem"]["pck"].value;
+            var sv = {
+                monhoc: monhoc,
+                tn: tn,
+                bt: bt,
+                btl: btl,
+                gk: gk,
+                ck: ck,
+                ptn: ptn,
+                pbt: pbt,
+                pbtl: pbtl,
+                pgk: pgk,
+                pck: pck,
+                xeploai: function(){
+                    if (monhoc == "KTHĐC") return (bt*15 + gk*35 + ck*35 + btl*15)/100;
+                    if (monhoc == "KTCT") return (bt*20  + ck*50 + btl*30)/100;
+                    if (monhoc == "HĐC") return (tn*20  + btl*10 + ck*50 + gk*20)/100;
+                    if (monhoc == "LTNC") return (bt*10 + ck*60 + btl*30)/100;
+                    if (monhoc == "HĐH") return (tn*10  + bt*10 + ck*50 + btl*30)/100;
+                    return (tn*ptn + bt*pbt + btl*pbtl + gk*pgk + ck*pck)/100;
+                }
+            }
+            dsdiem[dsdiem.length] = sv;
+            document.getElementById("ketqua").innerHTML = showkq();
+        }
+        function showkq(){
+            var kq = "";
+            dsdiem.forEach(sv => {
+                kq += "<tr><td>" + sv.monhoc + "</td><td>" + sv.tn + "</td><td>" + sv.bt + "</td><td>" + sv.btl + "</td><td>" + sv.gk + "</td><td>" + sv.ck + 
+                    "</td><td>" + sv.xeploai() + "</tr><td>";
+            });
+            return kq;
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>
